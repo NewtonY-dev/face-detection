@@ -64,7 +64,7 @@ def run_recognition(camera_index: int, source: str | None, backend: str) -> None
                 face = gray[y : y + h, x : x + w]
                 person_id, confidence = recognizer.predict(face)
 
-                is_known = confidence < 75 and person_id in labels
+                is_known = confidence < 85 and person_id in labels
                 name = labels.get(person_id, "Unknown") if is_known else "Unknown"
                 color = (40, 220, 80) if is_known else (0, 0, 255)
 
@@ -102,6 +102,16 @@ def run_recognition(camera_index: int, source: str | None, backend: str) -> None
                 0.9,
                 (255, 255, 0),
                 2,
+            )
+            
+            cv2.putText(
+                frame,
+                "Press 'q' to exit",
+                (10, frame.shape[0] - 20),
+                cv2.FONT_HERSHEY_SIMPLEX,
+                0.6,
+                (255, 255, 255),
+                1,
             )
             if current_time > status_expires_at and not faces:
                 status_message = "System ready. Show a face to mark attendance."

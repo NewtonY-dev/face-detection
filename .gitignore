@@ -1,6 +1,27 @@
 __pycache__/
 *.pyc
+*.pyo
+*.pyd
+.Python
+
+venv/
+env/
+ENV/
+
+.vscode/
+.idea/
+.qodo/
+
+*.log
+*.swp
+*.swo
+*~
+
+yolov8n.pt
 
 dataset/
 trainer/
 attendance/
+
+.DS_Store
+Thumbs.db
