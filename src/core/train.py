@@ -5,7 +5,8 @@ from pathlib import Path
 import cv2
 import numpy as np
 
-from utils import DATASET_DIR, TRAINER_DIR, detect_faces, ensure_project_dirs, get_face_detector, parse_label_map, save_label_map
+from src.detection import get_face_detector, detect_faces
+from src.utils import DATASET_DIR, TRAINER_DIR, ensure_project_dirs, parse_label_map, save_label_map
 
 
 def load_training_data() -> tuple[list[np.ndarray], list[int]]:

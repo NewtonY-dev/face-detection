@@ -5,16 +5,8 @@ import time
 
 import cv2
 
-from utils import (
-    TRAINER_DIR,
-    detect_faces,
-    ensure_project_dirs,
-    get_face_detector,
-    load_label_map,
-    mark_attendance,
-    open_video_source,
-)
-from yolo_detect import PersonDetector
+from src.detection import get_face_detector, detect_faces, PersonDetector
+from src.utils import TRAINER_DIR, ensure_project_dirs, load_label_map, mark_attendance, open_video_source
 
 
 def run_recognition(camera_index: int, source: str | None, backend: str) -> None:
@@ -28,7 +20,7 @@ def run_recognition(camera_index: int, source: str | None, backend: str) -> None
     recognizer = cv2.face.LBPHFaceRecognizer_create()
     recognizer.read(str(model_path))
 
-    person_detector = PersonDetector("yolov8n.pt")
+    person_detector = PersonDetector()
 
     camera = open_video_source(source=source, camera_index=camera_index, backend_name=backend)
 

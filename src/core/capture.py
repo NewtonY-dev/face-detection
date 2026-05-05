@@ -5,13 +5,8 @@ from pathlib import Path
 
 import cv2
 
-from utils import (
-    create_user_dataset_dir,
-    detect_faces,
-    ensure_project_dirs,
-    get_face_detector,
-    open_video_source,
-)
+from src.detection import get_face_detector, detect_faces
+from src.utils import create_user_dataset_dir, ensure_project_dirs, open_video_source
 
 
 def capture_faces(

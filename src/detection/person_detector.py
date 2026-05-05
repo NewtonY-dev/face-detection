@@ -1,20 +1,27 @@
 from __future__ import annotations
 
+from pathlib import Path
+
 import cv2
 import numpy as np
 from ultralytics import YOLO
 
+
 class PersonDetector:
-    def __init__(self, model_path: str = "yolov8n.pt"):
+    def __init__(self, model_path: str = None):
+        if model_path is None:
+            # Default to models directory
+            base_dir = Path(__file__).resolve().parent.parent.parent
+            model_path = base_dir / "models" / "yolov8n.pt"
         # Load the YOLO model (nano model by default for speed)
-        self.model = YOLO(model_path)
+        self.model = YOLO(str(model_path))
     
     def detect(self, frame: np.ndarray) -> list[tuple[int, int, int, int]]:
         """
         Detects people in the given frame using YOLO.
         Returns a list of bounding boxes (x, y, w, h) for detected people.
         """
-        results = self.model(frame, classes=[0], verbose=False) # class 0 is 'person' in COCO dataset
+        results = self.model(frame, classes=[0], verbose=False)  # class 0 is 'person' in COCO dataset
         
         boxes = []
         for result in results:
