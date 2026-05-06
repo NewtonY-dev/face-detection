@@ -1,4 +1,4 @@
-# Smart Attendance System
+# Face Detection Attendance
 
 A face recognition-based attendance system using OpenCV's LBPH (Local Binary Patterns Histograms) algorithm for face recognition, Haar Cascade for face detection, and YOLOv8 for person detection. The system captures face datasets, trains a recognition model, and automatically marks attendance through real-time face recognition.
 
